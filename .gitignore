@@ -1,0 +1,12 @@
+.zed/
+.fleet/
+.vscode/
+.node_modules/
+
+*.pyc
+
+.bash_history
+.python_history
+
+
+__pycache__/
