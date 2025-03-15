@@ -15,7 +15,6 @@ arch: Collection = Collection(
     Package('nautilus', None, None),
     Package('totem', None, None),
     Package('snapshot', None, None),
-    Package('snapshot', None, None),
     Package('pdfarranger', None, None),
     Package('pdfarranger', None, None),
     Package('mission-center', None, None),
@@ -30,6 +29,7 @@ arch: Collection = Collection(
     Package('zed', None, None),
     Package('neovim', None, None),
     Package('ghostty', None, None),
+    Package('oh-my-posh', None, None),
     Package('docker-desktop', None, None),
     Package('visual-studio-code-bin', None, None),
     Package('meson', None, None),
@@ -56,5 +56,7 @@ arch: Collection = Collection(
     Package('asusctl', is_asus_laptop, None),
   ],
   [
+    Dotfile('dotfile/.zshrc', '.zshrc'),
+    Dotfile('dotfile/ohmyposh', '.config/ohmyposh'),
   ]
 )
