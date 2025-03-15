@@ -1,0 +1,34 @@
+theme = dark:Dark Pastel,light:Builtin Leight
+
+shell-integration-features = no-cursor
+
+font-family = "Cascadia Code"
+font-family-bold = "Cascadia Code"
+font-family-italic = "Cascadia Code"
+font-family-bold-italic = "Cascadia Code"
+font-size = 10
+font-style = SemiBold
+
+window-decoration = true
+window-padding-color = extend
+window-padding-x = 10
+window-padding-y = 10
+
+adjust-cell-height = 0%
+adjust-cell-width = 0%
+
+cursor-style = block
+cursor-invert-fg-bg = true 
+
+gtk-tabs-location = bottom
+
+mouse-hide-while-typing = true
+mouse-shift-capture = true
+
+selection-foreground = #000000
+selection-background = #ffffff
+
+link-url = true
+
+keybind = ctrl+n=new_tab
+keybind = ctrl+space=previous_tab
