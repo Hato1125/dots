@@ -54,10 +54,12 @@ arch: Collection = Collection(
     Package('switcheroo-control', None, None),
     Package('supergfxctl', None, None),
     Package('asusctl', is_asus_laptop, None),
+    Package('libva-nvidia-driver', connected_nvidia_gpu, None),
   ],
   [
     Dotfile('dotfile/.zshrc', '.zshrc'),
     Dotfile('dotfile/ohmyposh', '.config/ohmyposh'),
+    Dotfile('dotfile/hypr', '.config/hypr'),
     Dotfile('dotfile/ghostty', '.config/ghostty'),
   ]
 )
