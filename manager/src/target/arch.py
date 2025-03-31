@@ -60,6 +60,7 @@ arch: Collection = Collection(
     Dotfile('dotfile/.zshrc', '.zshrc'),
     Dotfile('dotfile/ohmyposh', '.config/ohmyposh'),
     Dotfile('dotfile/hypr', '.config/hypr'),
+    Dotfile('dotfile/uwsm', '.config/uwsm'),
     Dotfile('dotfile/ghostty', '.config/ghostty'),
   ]
 )
