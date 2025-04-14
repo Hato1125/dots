@@ -2,23 +2,26 @@ theme = dark:Dark Pastel,light:Builtin Leight
 
 shell-integration-features = no-cursor
 
-font-family = "Cascadia Code"
-font-family-bold = "Cascadia Code"
-font-family-italic = "Cascadia Code"
-font-family-bold-italic = "Cascadia Code"
-font-size = 10
-font-style = SemiBold
+font-family = "LigaConsolas Nerd Font"
+font-family-bold = "LigaConsolas Nerd Font"
+font-family-italic = "LigaConsolas Nerd Font"
+font-family-bold-italic = "LigaConsolas Nerd Font"
+font-size = 11
+font-style = Bold
 
 window-decoration = true
 window-padding-color = extend
 window-padding-x = 10
 window-padding-y = 10
 
-adjust-cell-height = 0%
+adjust-cell-height = 25%
 adjust-cell-width = 0%
 
+adjust-underline-position = 30%
+adjust-underline-thickness = 20%
+
 cursor-style = block
-cursor-invert-fg-bg = true 
+cursor-invert-fg-bg = true
 
 gtk-tabs-location = bottom
 
