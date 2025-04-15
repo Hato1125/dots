@@ -61,6 +61,7 @@ arch: Collection = Collection(
     Dotfile('dotfile/ohmyposh', '.config/ohmyposh'),
     Dotfile('dotfile/hypr', '.config/hypr'),
     Dotfile('dotfile/uwsm', '.config/uwsm'),
+    Dotfile('dotfile/nvim', '.config/nvim'),
     Dotfile('dotfile/ghostty', '.config/ghostty'),
   ]
 )
