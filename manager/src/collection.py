@@ -31,6 +31,9 @@ def install() -> None:
     case 'Arch Linux':
       from .target.arch import arch
       arch.install()
+    case 'Windows':
+      from .target.windows import windows
+      windows.install()
 
 @staticmethod
 def uninstall() -> None:
@@ -38,3 +41,6 @@ def uninstall() -> None:
     case 'Arch Linux':
       from .target.arch import arch
       arch.uninstall()
+    case 'Windows':
+      from .target.windows import windows
+      windows.uninstall()

@@ -16,7 +16,7 @@ class PackageManager(ABC):
 
 class YayPackageManager(PackageManager):
   def install_package(self, package: str) -> None:
-    subprocess.run(['yay', '-S', package]);
+    subprocess.run(['yay', '-S', package])
 
   def has_package(self, package: str) -> bool:
     return len(
@@ -31,7 +31,7 @@ class YayPackageManager(PackageManager):
 
 class ParuPackageManager(PackageManager):
   def install_package(self, package: str) -> None:
-    subprocess.run(['paru', '-S', package]);
+    subprocess.run(['paru', '-S', package])
 
   def has_package(self, package: str) -> bool:
     return len(
@@ -43,6 +43,37 @@ class ParuPackageManager(PackageManager):
     return len(
       subprocess.run(['pacman', '-Qs', 'paru'], capture_output=True).stdout
     ) > 0
+
+class WingetPackageManager(PackageManager):
+  def install_package(self, package: str) -> None:
+    print('test')
+    print(package)
+    subprocess.run(['winget', 'install', package])
+
+  def has_package(self, package: str) -> bool:
+    try:
+      result = subprocess.run(['winget', 'list', '--id', package], stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+        
+      if package.lower() in result.stdout.decode('utf-8').lower():
+        return True
+      else:
+        return False
+    except subprocess.CalledProcessError:
+      return False
+
+  @staticmethod
+  def has() -> bool:
+    try:
+      result = subprocess.run(
+        ['winget', '--version'],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=True
+      )
+
+      return True
+    except subprocess.CalledProcessError:
+      return False
 
 class Package:
   _name: str
@@ -76,5 +107,8 @@ def get_available_package_manager() -> 'PackageManager':
 
       if ParuPackageManager.has():
         return ParuPackageManager()
+    case 'Windows':
+      if WingetPackageManager().has():
+        return WingetPackageManager()
 
   raise RuntimeError('There is no package manager available.')
