@@ -7,6 +7,7 @@ from ..utils import connected_nvidia_gpu, is_asus_laptop
 arch: Collection = Collection(
   [
     Package('firefox', None, None),
+    Package('ungoogled-chromium-bin', None, None),
     Package('blueberry', None, None),
     Package('pavucontrol', None, None),
     Package('discord', None, None),
@@ -16,7 +17,7 @@ arch: Collection = Collection(
     Package('totem', None, None),
     Package('snapshot', None, None),
     Package('pdfarranger', None, None),
-    Package('pdfarranger', None, None),
+    Package('inkdrop', None, None),
     Package('mission-center', None, None),
     Package('gnome-music', None, None),
     Package('gnome-calculator', None, None),
