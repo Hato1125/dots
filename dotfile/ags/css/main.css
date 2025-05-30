@@ -1,0 +1,64 @@
+@import url('color.css');
+@import url('bar.css');
+@import url('settings.css');
+
+window {
+  background-color: transparent;
+}
+
+label {
+  font-family: 'Google Sans', 'Noto Sans CJK KR';
+  font-weight: bold;
+  font-size: 18px;
+
+  color: @onSurface;
+}
+
+button {
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+tooltip {
+  background-color: @surface;
+  padding: 0;
+  margin: 0;
+  border-radius: 50rem;
+}
+
+tooltip label {
+  padding: 0;
+  margin: 0 8px 0 8px;
+  font-size: 15px;
+  text-shadow: none;
+}
+
+.symbols {
+  color: @onSurface;
+}
+
+.symbol-rounded {
+  font-family: 'Material Symbols Rounded';
+  font-size: 19px;
+}
+
+.symbol-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-size: 19px;
+}
+
+.symbol-sharp {
+  font-family: 'Material Symbols Sharp';
+  font-size: 19px;
+}
+
+.monitor-corner {
+  background-color: black;
+  border-radius: 24px;
+}
+
+.bar-corner {
+  background-color: @surface;
+  border-radius: 24px;
+}

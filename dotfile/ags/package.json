@@ -1,0 +1,10 @@
+{
+  "name": "mii.desktop",
+  "dependencies": {
+    "astal": "/usr/share/astal/gjs"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.10",
+    "astal": "/usr/share/astal/gjs"
+  }
+}

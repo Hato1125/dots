@@ -1,0 +1,40 @@
+.settings {
+  background-color: @surface;
+}
+
+.settings .entry {
+  min-width: 250px;
+  min-height: 50px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding-left: 25px;
+  border-radius: 50rem;
+  font-size: 15px;
+  background-color: @surfaceContainerHigh;
+}
+
+.settings .category-list {
+  padding: 8px;
+}
+
+.settings .category-list .card {
+  padding: 16px 22px;
+  border-radius: 26px;
+  box-shadow: none;
+}
+
+.settings .category-list .card .symbol-outlined {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.settings .category-list .card .title {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.settings .category-list .card .description {
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.7;
+}

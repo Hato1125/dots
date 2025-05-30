@@ -1,0 +1,53 @@
+.bar {
+  background-color: @surface;
+}
+
+.bar.vertical {
+  padding: 48px 9px 48px 9px;
+  min-width: 40px;
+}
+
+.bar.horizontal {
+  padding: 9px 48px 9px 48px;
+  min-height: 40px;
+}
+
+.time {
+  font-size: 12px;
+}
+
+.date {
+  font-size: 12px;
+}
+
+.keylayout {
+  font-size: 15px;
+}
+
+.active-workspace {
+  font-size: 16px;
+  margin: -1px;
+  color: @primary;
+}
+
+.active-client {
+  font-size: 12px;
+}
+
+.search-button {
+  background-color: @tertiary;
+  border-radius: 50rem;
+}
+
+.search-button .symbol-outlined {
+  color: @onTertiary;
+}
+
+.app-button {
+  background-color: @primary;
+  border-radius: 50rem;
+}
+
+.app-button .symbol-outlined {
+  color: @onPrimary;
+}
