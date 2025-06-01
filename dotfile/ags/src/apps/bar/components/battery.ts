@@ -6,13 +6,13 @@ import { Variable, bind } from 'astal';
 const battery = Battery.get_default();
 
 interface BatteryIconSet {
-  percentageIcons: string[],
+  icons: string[],
   charginIcon: string,
   errorIcon: string,
 }
 
 const horizontalIconSet: BatteryIconSet = {
-  percentageIcons: [
+  icons: [
     'battery_android_0',
     'battery_android_1',
     'battery_android_2',
@@ -27,7 +27,7 @@ const horizontalIconSet: BatteryIconSet = {
 };
 
 const verticalIconSet: BatteryIconSet = {
-  percentageIcons: [
+  icons: [
     'battery_0_bar',
     'battery_1_bar',
     'battery_2_bar',
@@ -50,33 +50,31 @@ function getIcon(
     return iconSet.charginIcon;
   }
 
-  if (percentage === -1) {
+  if (percentage < 0 || percentage > 1) {
     return iconSet.errorIcon;
   }
 
-  return iconSet.percentageIcons[
-    Math.floor(percentage * (iconSet.percentageIcons.length - 1))
-  ]!;
+  const length = iconSet.icons.length - 1;
+  const index = Math.floor(percentage * length);
+
+  return iconSet.icons[index]!;
 }
 
-const horizontalIcon = Variable.derive([
-  bind(battery, 'percentage'),
-  bind(battery, 'charging'),
-], (percentage: number, charging: boolean): string => getIcon(horizontalIconSet, percentage, charging));
+function getPercentage(percentage: number): string {
+  return percentage === -1 ? 'none' : `${percentage * 100}%`;
+}
 
-const verticalIcon = Variable.derive([
-  bind(battery, 'percentage'),
-  bind(battery, 'charging'),
-], (percentage: number, charging: boolean): string => getIcon(verticalIconSet, percentage, charging));
+export default (vertical: boolean): Widget.Label => {
+  const iconSet = vertical ? verticalIconSet : horizontalIconSet;
 
-export default (vertical: boolean) => new Widget.Label({
-  className: 'symbol-outlined',
-  label: bind(
-    vertical
-      ? verticalIcon
-      : horizontalIcon
-  ),
-  tooltipText: bind(battery, 'percentage').as((percentage: number): string => {
-    return percentage === -1 ? 'none' : `${percentage * 100}%`;
-  }),
-});
+  const iconvariable = Variable.derive([
+    bind(battery, 'percentage'),
+    bind(battery, 'charging'),
+  ], (percentage: number, charging: boolean): string => getIcon(iconSet, percentage, charging));
+
+  return new Widget.Label({
+    className: 'symbol-outlined',
+    label: bind(iconvariable),
+    tooltipText: bind(battery, 'percentage').as(getPercentage),
+  });
+}

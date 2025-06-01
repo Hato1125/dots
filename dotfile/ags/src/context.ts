@@ -36,12 +36,11 @@ export const scheme = Variable(new Scheme());
 
 export async function initContext(): Promise<void> {
   scheme.subscribe(async (scheme: Scheme) => {
-    const css = Object.entries(scheme)
-      .map(([k, v]: [string, Color]): string => {
-        return `@define-color ${k} ${v.toCode()};`;
-      })
-      .join('\n');
+    let css = '';
 
+    Object.entries(scheme).forEach(([k, v]: [string, Color]) => {
+      css += `@define-color ${k} ${v.toCode()};\n`;
+    });
     await writeFileAsync(COLOR_PATH, css);
   });
 

@@ -1,31 +1,33 @@
 export class Color {
   private rgb: Uint8Array = new Uint8Array(3);
 
-  constructor();
-  constructor(rgb: number);
-  constructor(rgb: string);
-  constructor(r: number, g: number, b: number);
+  static fromRGB(r: number, g: number, b: number): Color {
+    const color = new Color();
+    color.r = r;
+    color.g = g;
+    color.b = b;
 
-  constructor(r?: number | string, g?: number, b?: number) {
-    switch (typeof r) {
-      case 'string':
-        const hex = Number.parseInt(r.slice(1), 16);
-        this.rgb[0] = (hex >> 16) & 0xff;
-        this.rgb[1] = (hex >> 8) & 0xff;
-        this.rgb[2] = hex & 0xff;
-        break;
-      case 'number':
-        if (typeof g === 'number' && typeof b === 'number') {
-          this.rgb[0] = Math.min(Math.max(r, 0), 255);
-          this.rgb[1] = Math.min(Math.max(g, 0), 255);
-          this.rgb[2] = Math.min(Math.max(b, 0), 255);
-        } else {
-          this.rgb[0] = r >> 16 & 0xff;
-          this.rgb[1] = r >> 8 & 0xff;
-          this.rgb[2] = r & 0xff;
-        }
-        break;
-    }
+    return color;
+  }
+
+  static fromRGBHexStr(rgb: string): Color {
+    const hex = Number.parseInt(rgb.slice(1), 16);
+
+    const color = new Color();
+    color.r = (hex >> 16) & 0xff;
+    color.g = (hex >> 8) & 0xff;
+    color.b = hex & 0xff;
+
+    return color;
+  }
+
+  static fromRGBHex(rgb: number): Color {
+    const color = new Color();
+    color.r = rgb >> 16 & 0xff;
+    color.g = rgb >> 8 & 0xff;
+    color.b = rgb & 0xff;
+
+    return color;
   }
 
   get r(): number {
@@ -38,6 +40,18 @@ export class Color {
 
   get b(): number {
     return this.rgb[2]!;
+  }
+
+  set r(r: number) {
+    this.rgb[0] = r & 0xff;
+  }
+
+  set g(g: number) {
+    this.rgb[1] = g & 0xff;
+  }
+
+  set b(b: number) {
+    this.rgb[2] = b & 0xff;
   }
 
   toHex(): number {

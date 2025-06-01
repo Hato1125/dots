@@ -3,9 +3,9 @@ import { App, Gdk, Gtk, Widget } from 'astal/gtk3';
 const monitorWindows = new Map<Gdk.Monitor, Gtk.Widget>();
 
 export function addFactor(factor: (_: Gdk.Monitor) => Gtk.Widget): void {
-  for (const monitor of App.get_monitors()) {
+  App.get_monitors().forEach((monitor: Gdk.Monitor): void => {
     monitorWindows.set(monitor, factor(monitor));
-  }
+  });
 
   App.connect('monitor-added', (_, monitor: Gdk.Monitor) => {
     monitorWindows.set(monitor, factor(monitor));

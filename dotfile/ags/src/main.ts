@@ -1,24 +1,19 @@
-import { App } from 'astal/gtk3';
+import { App } from "astal/gtk3";
 
-import { initCore } from '@core/core';
+import { initCore } from "@core/core";
 
-import bar from '@apps/bar/bar';
-import { monitorCorner, barCorner } from './apps/corner/corner';
+import bar from "@apps/bar/bar";
+import { monitorCorner, barCorner } from "./apps/corner/corner";
 
-import { CSS_ENTRYPOINT } from './path';
+import { CSS_ENTRYPOINT } from "./path";
 
 App.start({
-  instanceName: 'shell',
+  instanceName: "shell",
   css: CSS_ENTRYPOINT,
   async main(): Promise<void> {
-    try {
-      await initCore();
-    } catch(err) {
-      console.error(err);
-    }
-
+    await initCore();
     bar();
     barCorner();
     monitorCorner();
-  }
+  },
 });
